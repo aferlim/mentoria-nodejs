@@ -2,7 +2,7 @@
 
 ## Introdução
 
-![node](node1.png)
+![node](node1.png?raw=true)
 
 **Javascript no backend!**
 O node surgiu com o proposito de reduzir o consumo de recursos computacionais.
@@ -37,13 +37,13 @@ obs. ping obtem o status da rede e a conexão entre um ponto e outro
 
 ### Como funciona a Thread?
 
-![thread](thread-1.png)
+![thread](thread-1.png?raw=true)
 
 Tarefas do processador
 Núcleos do processador, aplicações modernas fazem uso dos núcleos
 
 **Demonstração:**
-![Event loop](event-loop-1.png)
+![Event loop](event-loop-1.png?raw=true)
 
 A libuv é um biblioteca C++ open-source usada pelo Node em conjunto com o V8 para gerenciar o pool de threads que executa as operações concorrentes ao Event Loop single-thread do Node.
 
@@ -209,6 +209,24 @@ Encerrando um processo:
     console.log(`total execution time ${final}`)
 
 
+# Pré Módulo produtos
+
+    echo %cd%
+    cd c:\Users\{seu-usuario}\Desktop>
+
+    mkdir produtos
+    cd produtos
+
+novo arquivo app.js
+
+    console.log('Nossa aplicação de produtos')
+
+    const fs = require('fs');
+
+    fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+    });
 
 # Módulo produtos
 
