@@ -210,7 +210,11 @@ Encerrando um processo:
     console.log(`total execution time ${final}`)
 
 
-# Pré Módulo produtos
+# Pré módulo produtos
+
+**Passo 1** - Criação da estrutura:
+
+Abrir o terminal / console e executar:
 
     echo %cd%
     cd c:\Users\{seu-usuario}\Desktop>
@@ -218,32 +222,228 @@ Encerrando um processo:
     mkdir produtos
     cd produtos
 
-novo arquivo app.js
+**Passo 2** - Novo arquivo app.js
+
+Abrir o VsCode:
+> code .
+
+Criar Arquivo app.js
+
+**Passo 3** - Utilizando o moduto FS do NodeJs para gerencimanto do módulo de arquivos do sistema operacional
+Adicionar ao arquivo app.js:
+
 
     console.log('Nossa aplicação de produtos')
 
     const fs = require('fs');
 
     fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+        
+        if (err) {
+            console.log("Não foi possível salvar o arquivo");
+        };
+
+        console.log('informações salvas');
+    });
+
+**Passo 4** - Ir até o console (prompt de comando / terminal ) e executar:
+
+> node app.js
+
+No vs Code um arquivo *mynewfile.txt* foi criado. Verifique o conteúdo do arquivo.
+
+
+### Módulo OS
+
+Conheca mais em: https://nodejs.org/api/os.html
+
+**Passo 5** - adicione mais uma linha em app.js
+
+    fs.appendFile('greetings.txt', 'Hello World', function (err) {
+        
+        if (err) {
+            console.log("Não foi possível salvar o arquivo");
+        };
+
+        console.log('informações salvas');
+    });
+
+**Passo 6** - Vamos adicionar o modulo OS no nosso novo arquivo. Através da função "require"
+
+    const os = require('os');
+
+**Passo 7** - O método userinfo([options]) retorna informações do usuário atual logado na máquina:
+
+Acesse: https://nodejs.org/api/os.html#os_os_userinfo_options
+
+Vamos comentar a linha:
+
+    /* fs.appendFile('greetings.txt', 'Hello World', function (err) {
+        
+        if (err) {
+            console.log("Não foi possível salvar o arquivo");
+        };
+
+        console.log('informações salvas');
+    }); */
+
+E adicionar: 
+
+    var user = os.userInfo();
+    console.log(user);
+
+Execute novamente no terminal, para que seja apresentado o objeto preenchido do método "userinfo":
+
+> node app.js
+
+**Passo 8** - Refatorando e finalizando o pré-modulo:
+
+Vamos criar uma função de callback para utilizá-la dinamicamente no event looping:
+
+    const callback = function (err) {
+        
+        if (err) {
+            console.log("Não foi possível executar a ação.");
+        };
+
+        console.log('Ação executada com sucesso.');
+    }
+
+Então, finalizamos refatorando nossos métodos assíncronos (app.js final):
+
+    console.log('Nossa aplicação de produtos')
+
+    const fs = require('fs');
+    const os = require('os');
+
+    const callback = function (err) {
         if (err) throw err;
         console.log('Saved!');
-    });
+    }
+
+    var user = os.userInfo();
+
+    fs.appendFile('mynewfile1.txt', 'Hello content!', callback);
+
+    fs.appendFile('grettings.txt', `Hello ${user.username}`, callback);
+
+Execute novamente no terminal:
+
+> node app.js
 
 # Módulo produtos
 
-    echo %cd%
-    cd c:\Users\{seu-usuario}\Desktop>
+Passo 1: Criar aquivo main.js no VSCode
 
-    mkdir produtos
-    cd produtos
+    const os = require('os');
+    var user = os.userInfo();
 
-novo arquivo app.js
+    console.log(`minha aplicação de produtos - por ${user.username}`);
 
-    console.log('Nossa aplicação de produtos')
+Passo 2: Exportando módulos:
 
-    const fs = require('fs');
+Vamos primeiro conhecer o objeto **module** da call stack
 
-    fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+    console.log(module);
+
+Temos propriedades importantes como: id, parent, filename e a mais utilizada **"exports"**.
+
+Passo 3: Crie no VSCode um arquivo "product.js"
+
+    console.log("iniciando product.js");
+    module.exports.age = 38;
+
+Adicione em "app.js":
+
+    const product = require('./product') // nao precisa da extensão ".js", ex: './product.js'
+
+    console.log(module);
+
+    const callback = function (err) {
         if (err) throw err;
         console.log('Saved!');
-    });
+    }
+
+    const fs = require('fs');
+    fs.appendFile('grettings.txt', `Olá, sou ${user.username} e tenho ${product.age} anos.`, callback);
+
+Execute:
+
+> node product.js
+
+Saída greetings.txt:
+
+> Olá, sou andre.lima e tenho 38 anos.
+
+Comente as linhas em main.js:
+
+    const fs = require('fs');
+    fs.appendFile('grettings.txt', `Olá, sou ${user.username} e tenho ${product.age} anos.`, callback);
+
+Passo 3 - Montando nosso repositório de produtos
+
+Crie uma nova pasta no projeto e adicione um arquivo .json
+
+Pelo console ou direto no VSCode, **pelo console**:
+> mkdir database && echo [] > database/data.json
+
+Passo 4 - No arquivo "product.js" adicione:
+
+    const fs = require('fs');
+    const repoFile = './database/data.json';
+
+    module.exports.AddProduct = () => {
+
+    }
+
+- A função "AddProduct" servirá para gravar novos pordutos.
+- A variável "repoFile" representa o nosso arquivo de repositório
+
+... continua:
+
+### NPM
+
+- Conhecendo
+- NPM Init
+
+### Nodemon
+
+- Instalando e utilizando
+
+### Process.argv
+
+- Analisando o módulo
+
+### JSON
+
+- Exemplos
+- Manipulação de objetos
+- Convertendo Ojetos para string
+- Convertendo String para Objetos
+- Armazendo strings no arquivo de repositório
+
+### Yargs
+
+- Parametros de entrada
+
+### Crud
+
+- Criar
+    - Produtos Duplicados
+- Ler todos
+- Ler um
+- Atualizar
+- Deletar
+    - Remoção por contagem de arrays
+    - Ternário
+- Try Catch
+    - Implementando
+- Princípio DRY
+
+### Debugando no VSCode
+
+### Desafio
+
+### Yargs Avançado
+
+### Async, Await, Callbacks, Callback Queues

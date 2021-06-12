@@ -1,5 +1,5 @@
 const fs = require('fs');
-const RepoFile = 'database/data.json'
+const RepoFile = './produtos/database/data.json'
 
 let productsData = [];
 

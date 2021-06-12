@@ -1,5 +1,7 @@
 const Products = require('./produtos')
 
+console.log(module);
+
 const initApp = () => {
     
     Products.Init()
