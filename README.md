@@ -43,6 +43,7 @@ Tarefas do processador
 Núcleos do processador, aplicações modernas fazem uso dos núcleos
 
 **Demonstração:**
+
 ![Event loop](event-loop-1.PNG?raw=true)
 
 A libuv é um biblioteca C++ open-source usada pelo Node em conjunto com o V8 para gerenciar o pool de threads que executa as operações concorrentes ao Event Loop single-thread do Node.
