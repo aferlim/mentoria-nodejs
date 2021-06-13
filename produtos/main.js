@@ -16,10 +16,10 @@ const initApp = () => {
 
     switch (inputData) {
         case 'get':
-            console.log('Products(data)')
+            //console.log(Products)
             break;
         case 'list':
-            console.log(Products.List())
+            console.log(Products.ListAll())
             break;
         case 'add':
             Products.Insert({ id: Math.random(3), name: 'novo produto' }, () =>{

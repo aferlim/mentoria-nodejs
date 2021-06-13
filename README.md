@@ -22,7 +22,7 @@ Podemos chamar isso de operações de I/O (Input/OutPut)
 1 microsegundo é igual 0,000001 segundo, ou seja 1e-6
 
 Processar dados, ou seja executar algoritmos, é estupidamente mais rápido do que qualquer operação de IO que você possa querer fazer. 
-Mesmo se tivermos um SSD em nossa máquina com velocidades de leitura de 200-730 MB/s fará com que a leitura de 1KB de dados leve 1.4 micro-segundos. 
+Mesmo se tivermos um SSD em nossa máquina com velocidades de leitura de 200-730 MB/s fará com que a leitura de 1KB de dados leve 1.4 micro-segundos.
 
 **Parece rápido?** Saiba que nesse tempo uma CPU de 2GHz consegue executar **28.000 instruções.**
 
@@ -340,6 +340,8 @@ Passo 1: Criar aquivo main.js no VSCode
 
     console.log(`minha aplicação de produtos - por ${user.username}`);
 
+> Obs: pesquiser sobre template string `minha string ${my_var}`
+
 Passo 2: Exportando módulos:
 
 Vamos primeiro conhecer o objeto **module** da call stack
@@ -393,18 +395,46 @@ Passo 4 - No arquivo "product.js" adicione:
     const repoFile = './database/data.json';
 
     module.exports.AddProduct = () => {
-
+        console.log('produto adicionado');
     }
 
 - A função "AddProduct" servirá para gravar novos pordutos.
 - A variável "repoFile" representa o nosso arquivo de repositório
 
-... continua:
+Habilitar NPM 
+
+    npm init
+
+Efetuar configurações no passo a passo. Pronto arquivo package.json criado.
+
+Instalando Nodemon
+
+    npm install -g nodemon
+
+Iniciando configurações de comandos, arquivo main.js:
+
+    switch (process.argv[2]) {
+        case 'create':
+            console.log(product.AddProduct())
+            break;
+        case 'read':
+            product.AddProduct()
+            break;
+        case 'list':
+            console.log(product.ListAll());
+        case 'update':
+        case 'delete':
+        default:
+            break;
+    }
 
 ### NPM
 
 - Conhecendo
 - NPM Init
+- Package.json
+- Pasta Global
+- Pasta Local
 
 ### Nodemon
 
@@ -444,6 +474,15 @@ Passo 4 - No arquivo "product.js" adicione:
 
 ### Desafio
 
+- Evitar Criação de produtos duplicados
+- Atualizar um produto
+- Deletar um produto
+- Remover códigos duplicados
+- No módulo **yargs** eu consigo mostrar no console quais são as opções de cada comando, documente esses comandos
+- Nos explique na próxima mentoria as lições aprendidas e o que na sua visão deveria ser melhorado na aplicação já desenvolvida.
+
 ### Yargs Avançado
+
+
 
 ### Async, Await, Callbacks, Callback Queues
