@@ -81,7 +81,9 @@ Cookies: envia informações sobre cookies.
 Accept: especifica a preferência de resposta.
 User-Agent: envia informações sobre o client (Navegador)
 
-O client é livre para enviar qualquer tipo de campo no cabeçalho, inclusive customizados. Podem gerar comportamentos específicos pelo servidor
+O client é livre para enviar qualquer tipo de campo no cabeçalho, inclusive customizados. Podem gerar comportamentos específicos pelo servidor.
+
+https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers
 
 **Corpo / Mensagem**
 
@@ -95,12 +97,14 @@ As respostas são formadas pelas seguintes entidades:
 - Cabeçalho
 - Corpo / Mensagem
 
-**Na Linha de status** temos 3 informações: 
+**Na Linha de status** temos 3 informações:
 Versão do protocolo: versão utilizada pelo servidor;
 Código numérico do Status: HttpStatus Codes
 Texto associado ao status
 
 O código do status é a informação mais importante na resposta.
+
+https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status
 
 Vamos conhecer os status codes ...
 
@@ -113,3 +117,11 @@ Ex: um servidor pode retornar um 200 mesmo com erro na requisição. Claro que n
 O uso correto dos status code é dever do desenvolvedor, e a má utiliazação pode confundir e atrapalhar que for utilizar sua aplicação caso não seja seguida essa semântica. 
 
 **Cabeçalhos**
+
+https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers
+
+## Desafio 2
+
+Desenvolver baseado no tutorial abaixo:
+
+https://www.codementor.io/@nulldreams/utilizando-a-engine-ejs-para-aplicacoes-em-nodejs-dok81l3si
